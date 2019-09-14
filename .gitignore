@@ -1,0 +1,5 @@
+#WebStorm project configuration files
+/.idea/
+
+#Installed modules
+/node_modules/
