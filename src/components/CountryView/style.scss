@@ -1,0 +1,9 @@
+.country-view {
+  width: 80%;
+  margin: 0 auto;
+
+  &__flag {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
