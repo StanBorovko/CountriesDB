@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './style.css';
 import RestCountriesService from '../../services/Rest-сountries-service';
 import {RestCountriesServiceProvider} from '../Rest-countries-service-context/Rest-сountries-service-context';
@@ -8,6 +8,7 @@ import NavbarRegions from "../Navbar/Navbar";
 import Footbar from "../Footbar/Footbar";
 import Error404 from "../Error-404/Error-404";
 import HomePage from "../HomePage/HomePage";
+import SubregionPage from "../Subregion-page/Subregion-page";
 
 
 export default class App extends Component {
@@ -30,6 +31,11 @@ export default class App extends Component {
                                     <Route path="/"
                                            component={HomePage}
                                            exact />
+                                    <Route path="/bySubregion/:region?" component={SubregionPage} />
+                                    <Route path="/byLanguage/:region?" render={({ match }) => {
+                                        const { region } = match.params;
+                                        return <SubregionPage region={region} />
+                                    }} />
                                     <Route component={Error404}/>
                                 </Switch>
                             </section>

@@ -32,7 +32,7 @@ export default class RandomCountry extends Component {
     }
 
     onCountryLoaded = country => {
-        console.log(country);
+        // console.log(country);
         this.setState({
             country,
             loading: false,
