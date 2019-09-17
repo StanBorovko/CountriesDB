@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import './style.css';
+import {connect} from 'react-redux'
+
 import Spinner from '../Spinner/Spinner';
 import ErrorIndicator from '../Error-indicator/Error-indicator';
-import RestCountriesService from "../../services/Rest-сountries-service";
-import {getCounrtyCodes} from "../../resorces/country-codes";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import CountryView from "../CountryView/CountryView";
+import {getRandomCountry} from "../../actions";
 
-export default class RandomCountry extends Component {
+class RandomCountry extends Component {
     static defaultProps = {
         updateInterval: 10000
     };
@@ -17,20 +18,22 @@ export default class RandomCountry extends Component {
         loading: true
     };
 
-    restCountriesService = new RestCountriesService();
+    // restCountriesService = new RestCountriesService();
 
-    countryCodes = getCounrtyCodes();
+    // countryCodes = getCounrtyCodes();
 
     componentDidMount() {
+        //TODO: make fetching new country at loading;
+
+        this.updateCountry();
         const {updateInterval} = this.props;
-        this.updatePlanet();
-        this.interval = setInterval(this.updatePlanet, updateInterval);
+        this.interval = setInterval(this.updateCountry, updateInterval);
     }
 
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-
+/*
     onCountryLoaded = country => {
         // console.log(country);
         this.setState({
@@ -45,20 +48,34 @@ export default class RandomCountry extends Component {
             error: true,
             loading: false
         });
-    };
+    };*/
 
-    updatePlanet = () => {
+    updateCountry = () => {
+        /*const {country, loading, error} = this.props.getRandomCountry();
+        console.log('getRandomCountry', this.props.getRandomCountry());
+        console.log('getRandomCountry', country, loading, error);*/
+        this.props.getRandomCountry();
+        const {country, loading, error} = this.props;
+        // console.log('getRandomCountry', country, loading, error);
+
+        this.setState({
+            country,
+            loading,
+            error
+        })
+        /*
         const randomIndex = Math.floor(Math.random() * (this.countryCodes.length + 1)),
             randomCountryCode = this.countryCodes[randomIndex];
         this.restCountriesService
             .getCountry(randomCountryCode)
             .then(this.onCountryLoaded)
-            .catch(this.onError);
+            .catch(this.onError);*/
     };
 
     render() {
         // const country = JSON.stringify(this.state.country);
         const {country, loading, error} = this.state;
+        console.log(country, loading, error);
         const hasData = !(loading || error);
         const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
@@ -74,3 +91,14 @@ export default class RandomCountry extends Component {
     }
 }
 
+
+const mapStateToProps = ({country}) => {
+    // console.log('country', country);
+    return {
+    country: country.country,
+    loading: country.loading,
+    error: country.error
+}}
+
+
+export default connect(mapStateToProps,{getRandomCountry})(RandomCountry);
