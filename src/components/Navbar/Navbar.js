@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import globe from './globe.svg';
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Redirect } from 'react-router'
 
 const NavbarRegions = () => {
     return (

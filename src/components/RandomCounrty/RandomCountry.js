@@ -75,7 +75,7 @@ class RandomCountry extends Component {
     render() {
         // const country = JSON.stringify(this.state.country);
         const {country, loading, error} = this.state;
-        console.log(country, loading, error);
+        // console.log(country, loading, error);
         const hasData = !(loading || error);
         const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
@@ -98,7 +98,7 @@ const mapStateToProps = ({country}) => {
     country: country.country,
     loading: country.loading,
     error: country.error
-}}
+}};
 
 
 export default connect(mapStateToProps,{getRandomCountry})(RandomCountry);

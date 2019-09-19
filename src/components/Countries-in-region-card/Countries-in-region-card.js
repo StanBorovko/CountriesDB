@@ -1,30 +1,18 @@
 import React from 'react';
 import './style.css';
-import ListGroup from "react-bootstrap/ListGroup";
-import withRestcountriesService from "../hoc-helpers/with-restcountries-service";
-import RestCountriesService from '../../services/Rest-сountries-service';
-import {withData} from "../hoc-helpers";
-import compose from "../hoc-helpers/compose";
+import Card from "react-bootstrap/Card";
 
-const CountriesInRegionCard = ({region}) => {
-    console.log(region);
-    const items = region.map(country => {
-        return <ListGroup.Item>{country.name}</ListGroup.Item>
+const CountriesInRegionCard = ({counties}) => {
+    // console.log(counties);
+    const items = counties.map(country => {
+        return <Card.Body>{country.name}</Card.Body>
     });
     return (
-        <ListGroup>
+        <React.Fragment>
             {items}
-        </ListGroup>
+        </React.Fragment>
     );
 };
 
-const mapCountriesInRegionMethodsToProps = RestCountriesService => {
-    return {
-        getData: RestCountriesService.getAllCountriesInRegion
-    };
-};
 
-export default compose(
-    withRestcountriesService(mapCountriesInRegionMethodsToProps),
-    withData
-)(CountriesInRegionCard);
+export default CountriesInRegionCard;

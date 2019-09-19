@@ -1,37 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './style.css';
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import C from "../../constants";
+import AllCountriesInRegion from "./All-countries-in-region";
 
 const AllCountriesList = () => {
-    return (
-        <Accordion>
+        let eventKey = 0;
+        const content = C.REGIONS.map(region =>
             <Card>
                 <Card.Header>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        Europe
+                        {region}
                     </Accordion.Toggle>
                 </Card.Header>
-                <Accordion.Collapse eventKey="0">
-                    <Card.Body>
-
-                    </Card.Body>
+                <Accordion.Collapse eventKey={eventKey++}>
+                    <AllCountriesInRegion region={region.toLowerCase()}/>
                 </Accordion.Collapse>
             </Card>
-            <Card>
-                <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                        Americas
-                    </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="1">
-                    <Card.Body>Hello! I'm Americas</Card.Body>
-                </Accordion.Collapse>
-            </Card>
-        </Accordion>
-    );
-};
+        );
+        return (
+            <Accordion>
+                {content}
+            </Accordion>
+        );
+    }
+;
 
 
 export default AllCountriesList;
