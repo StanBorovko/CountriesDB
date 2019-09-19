@@ -20,6 +20,15 @@ export default (state = defaultState, action) => {
         case C.FETCH_COUNTRIES_IN_REGION_FAILURE:
             return {...state, error: true, loading: false};
 
+        case C.FETCH_ALL_COUNTRIES:
+            return {...state};
+
+        case C.FETCH_ALL_COUNTRIES_SUCCESS:
+            return {...state, countries: countries, loading: false};
+
+        case C.FETCH_ALL_COUNTRIES_FAILURE:
+            return {...state, error: true, loading: false};
+
         default:
             return state;
     }

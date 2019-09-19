@@ -51,6 +51,31 @@ export const getRandomCountry = () => {
     }
 };
 
+export const getAllCountries = () => {
+
+    return function(dispatch) {
+
+        dispatch({
+            type: C.FETCH_ALL_COUNTRIES
+        });
+
+        return axios.get(_apiBase + `/all?fields=name;alpha3Code;region`)
+            .then(function(response){
+                // console.log('response', response);
+                dispatch({
+                    type: C.FETCH_ALL_COUNTRIES_SUCCESS,
+                    countries: response.data
+                })
+            })
+            .catch(err => {
+                console.log('err:', err);
+                dispatch({
+                    type: C.FETCH_ALL_COUNTRIES_FAILURE,
+                    payload: err.message
+                })})
+    }
+};
+
 
 export const getAllCountriesInRegion = (region) => {
 

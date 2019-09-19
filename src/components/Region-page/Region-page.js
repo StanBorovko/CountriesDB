@@ -143,6 +143,7 @@ class RegionPage extends Component {
         const spinner = loading ? <Card.Body><Spinner/></Card.Body> : null;
         const content = hasData ? this.renderContent(countries, filter) : null;
         // const content =  null;
+        console.log(content);
         return (
             <div className="p-3">
                 {errorMessage}

@@ -143,7 +143,7 @@ export const getCounrtyCodes = () => {
         "NE\n" +
         "NG\n" +
         "NL\n" +
-        "AN\n" +
+        // "AN\n" +
         "BQ\n" +
         "NI\n" +
         "DE\n" +
