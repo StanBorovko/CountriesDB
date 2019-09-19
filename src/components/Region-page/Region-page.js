@@ -7,7 +7,7 @@ import CountriesInRegionCard from "../Countries-in-region-card/Countries-in-regi
 import Filter from "../Filter/Filter";
 import C from "../../constants";
 import {connect} from "react-redux";
-import {getAllCountriesInRegion, getAllSubregions} from "../../actions";
+import {getAllCountriesInRegion, getAllSubregions, getAllLanguages} from "../../actions";
 import { withRouter } from 'react-router-dom';
 
 
@@ -16,9 +16,7 @@ class RegionPage extends Component {
 
     componentDidMount() {
         // this.updateCountries();
-        const {region,getAllCountriesInRegion, getAllSubregions} = this.props;
-        getAllSubregions(region);
-        getAllCountriesInRegion(region);
+        this.update();
     }
 
     componentDidUpdate(prevProps) {
@@ -26,11 +24,33 @@ class RegionPage extends Component {
         console.log('prevProps.countries',prevProps.countries);
         console.log('this.props.filterItems',this.props.filterItems);
         console.log('prevProps.filterItems',prevProps.filterItems);
-        if ((this.props.countries !== prevProps.countries) && (this.props.filterItems !== prevProps.filterItems)) {
-
-            this.updateCountries();
+        console.log('this.props.filter',this.props.filter);
+        console.log('prevProps.filter',prevProps.filter);
+        if (this.props.filter !== prevProps.filter || this.props.region !== prevProps.region) {
+            this.update();
         }
     }
+
+    update = () => {
+        const {
+            region,
+            filter ,
+            getAllCountriesInRegion,
+            getAllSubregions,
+            getAllLanguages
+        } = this.props;
+
+        getAllCountriesInRegion(region);
+
+        if (filter === C.FILTER_BY_SUBREGIONS) {
+            getAllSubregions(region);
+        } else if (filter === C.FILTER_BY_LANGUAGES) {
+            getAllLanguages(region)
+        } else {
+            this.props.filterItems = [];
+        }
+    };
+/*
 
     updateCountries = () => {
         const {region} = this.props;
@@ -38,12 +58,13 @@ class RegionPage extends Component {
         this.props.getAllCountriesInRegion(region);
         const {countries, loading, error} = this.props;
 
-        /*this.setState({
+        /!*this.setState({
             countries,
             loading,
             error
-        })*/
+        })*!/
     };
+*/
 
     hasLanguage = (country, filterValue) => {
         const {languages} = country;
@@ -57,7 +78,7 @@ class RegionPage extends Component {
     renderContent = (countries, filter, filterValue) => {
         /*const {region, getAllSubregions} = this.props;
         getAllSubregions(region);*/
-        const {filterItems} = this.props;
+        const {filterItems, currentFilter} = this.props;
         console.log('filterItems', filterItems);
         /*const countriesFiltered = countries.filter(country => {
             if (filter === C.FILTER_BY_SUBREGIONS) {
@@ -70,7 +91,7 @@ class RegionPage extends Component {
         });*/
         return (
             <React.Fragment>
-                <Filter items={filterItems}/>
+                <Filter items={filterItems}/> <span>Current filter: {currentFilter}</span>
                 <CountriesInRegionCard counties={countries}/>
 
             </React.Fragment>
@@ -88,11 +109,11 @@ class RegionPage extends Component {
         const content = hasData ? this.renderContent(countries, filter, '') : null;
         // const content =  null;
         return (
-            <React.Fragment>
+            <div className="p-3">
                 {errorMessage}
                 {spinner}
                 {content}
-            </React.Fragment>
+            </div>
         );
     }
 }
@@ -107,4 +128,4 @@ const mapStateToProps = ({countries, filter}) => {
     }
 };
 
-export default withRouter(connect(mapStateToProps, {getAllCountriesInRegion, getAllSubregions})(RegionPage));
+export default withRouter(connect(mapStateToProps, {getAllCountriesInRegion, getAllSubregions, getAllLanguages})(RegionPage));

@@ -9,7 +9,7 @@ const Filter = ({items}) => {
     const filterItems = items.map(item => <Dropdown.Item eventKey={id++} key={item}>{item}</Dropdown.Item>);
     return (
         <ButtonGroup vertical>
-            <DropdownButton as={ButtonGroup} title="Dropdown" id="bg-vertical-dropdown-1">
+            <DropdownButton as={ButtonGroup} title="Filter" id="bg-vertical-dropdown-1">
                 <Dropdown.Item eventKey="1" key="">All</Dropdown.Item>
                 {filterItems}
             </DropdownButton>

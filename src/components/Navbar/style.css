@@ -1,5 +1,7 @@
 .navbar .navbar-nav .nav-link,
 .navbar .navbar-brand,
+.nav-item,
+.nav-item *,
 .link-label {
     color: green;
     border: none;
@@ -31,3 +33,14 @@
     background: rgba(0, 0, 0, 0.05);
 }
 
+.link-label {
+    display: block;
+}
+
+
+.link {
+    align-items: flex-start;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

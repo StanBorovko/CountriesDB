@@ -10,7 +10,7 @@ const _findUniqItems = items => {
             acc.push(item);
         }
         return acc;
-    }, []);
+    }, []).sort();
 };
 
 const _findUniqSubregions = items => {
@@ -19,8 +19,8 @@ const _findUniqSubregions = items => {
 };
 
 const _findUniqLanguages = items => {
-    const languages = items.map(item => item['languages']['name']);
-    return _findUniqItems(languages)
+    const languages = items.map(item => item['languages'].map(language => language['name']));
+    return _findUniqItems(languages.flat())
 };
 
 export const getRandomCountry = () => {
@@ -101,6 +101,34 @@ export const getAllSubregions = (region) => {
                 console.log('err:', err);
                 dispatch({
                     type: C.FETCH_ALL_SUBREGIONS_FAILURE,
+                    payload: err.message
+                })})
+    }
+};
+
+export const getAllLanguages = (region) => {
+
+    return function(dispatch) {
+
+        dispatch({
+            type: C.FETCH_ALL_LANGUAGES
+        });
+
+        return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;languages`)
+            .then(function(response){
+                // console.log('getAllSubregions response', response);
+                const unic =  _findUniqLanguages(response.data);
+                console.log('unic' , unic);
+                console.log('response.data' , response.data);
+                dispatch({
+                    type: C.FETCH_ALL_LANGUAGES_SUCCESS,
+                    filterItems: unic
+                })
+            })
+            .catch(err => {
+                console.log('err:', err);
+                dispatch({
+                    type: C.FETCH_ALL_LANGUAGES_FAILURE,
                     payload: err.message
                 })})
     }

@@ -21,13 +21,17 @@ const App = () => {
                             <Route path="/"
                                    component={HomePage}
                                    exact/>
-                            <Route path="/bySubregion/:region?" render={({match, }) => {
+                            <Route path="/bySubregion/:region?" render={({match}) => {
                                 const {region} = match.params;
-                                return <RegionPage region={region} filter={C.FILTER_BY_SUBREGIONS}/>
+                                return <RegionPage
+                                    region={region}
+                                    filter={C.FILTER_BY_SUBREGIONS}/>
                             }}/>
                             <Route path="/byLanguage/:region?" render={({match}) => {
                                 const {region} = match.params;
-                                return <RegionPage region={region} filter={C.FILTER_BY_LANGUAGES}/>
+                                return <RegionPage
+                                    region={region}
+                                    filter={C.FILTER_BY_LANGUAGES}/>
                             }}/>
                             <Route component={Error404}/>
                         </Switch>
