@@ -5,11 +5,10 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import globe from './globe.svg';
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {Redirect} from 'react-router'
 
 const NavbarRegions = () => {
     return (
-        <header className="bg-light">
+        <header className="bg-light border-success border-bottom">
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Navbar.Brand href="/">
                     <img
@@ -27,13 +26,6 @@ const NavbarRegions = () => {
                         <Nav.Item className="nav-item link">
                             <Link to="/">Home</Link>
                         </Nav.Item>
-                        {/*<Nav.Item className="nav-item link p-2">
-                            <div className="text-uppercase">europe:</div>
-                            <div>
-                                <Link to="/bySubregion/europe" className="mr-2">Subregions</Link>
-                                <Link to="/byLanguage/europe">Languages</Link>
-                            </div>
-                        </Nav.Item>*/}
                         <NavDropdown title="Europe" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/europe"
                                   className="link-label mt-1 mb-1">Subregions</Link>
@@ -68,115 +60,6 @@ const NavbarRegions = () => {
                             <Link to="/favorites">Favorites</Link>
                         </Nav.Item>
                     </Nav>
-                    {/*
-                        <Nav.Link>
-                            <Link to='/' className="link-label">
-                                Home
-                            </Link>
-                        </Nav.Link>
-                        <NavDropdown title="Europe" id="Europe-nav-dropdown">
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/bySubregion/europe' className="link-label">
-                                    Subregions
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/byLanguage/europe' className="link-label">
-                                    Languages
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <NavDropdown title="Americas" id="Americas-nav-dropdown">
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/bySubregion/americas' className="link-label">
-                                    Subregions
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/byLanguage/americas' className="link-label">
-                                    Languages
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <NavDropdown title="Asia" id="Asia-nav-dropdown">
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/bySubregion/asia' className="link-label">
-                                    Subregions
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/byLanguage/asia' className="link-label">
-                                    Languages
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <NavDropdown title="Africa" id="Africa-nav-dropdown">
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/bySubregion/africa' className="link-label">
-                                    Subregions
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/byLanguage/africa' className="link-label">
-                                    Languages
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <NavDropdown title="Oceania" id="Oceania-nav-dropdown">
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/bySubregion/oceania' className="link-label">
-                                    Subregions
-                                </Link>
-                            </NavDropdown.Item>
-                            <NavDropdown.Item
-                                href="javascript:void(0);"
-                                onClick={() = {
-
-                            }}>
-                                <Link to='/byLanguage/oceania' className="link-label">
-                                    Languages
-                                </Link>
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                        <Nav.Link href="#favs">My favorite countries</Nav.Link>
-                        */}
-                {/*</Nav>*/}
             </Navbar.Collapse>
         </Navbar>
         </header>

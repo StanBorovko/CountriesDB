@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './style.css';
 import ErrorBoundary from "../Error-boundary/Error-boundary";
 import NavbarRegions from "../Navbar/Navbar";

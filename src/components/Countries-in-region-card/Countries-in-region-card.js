@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 const CountriesInRegionCard = ({counties}) => {
     // console.log(counties);
     const items = counties.map(country => {
-        return <Card.Body>{country.name}</Card.Body>
+        return <Card.Body key={country["alpha3Code"]}>{country.name}</Card.Body>
     });
     return (
         <React.Fragment>

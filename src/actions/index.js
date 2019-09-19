@@ -60,7 +60,7 @@ export const getAllCountriesInRegion = (region) => {
             type: C.FETCH_COUNTRIES_IN_REGION
         });
 
-        return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;capital;currencies;languages;flag;population`)
+        return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;capital;currencies;languages;flag;population;subregion`)
             .then(function(response){
                 // console.log('response', response);
                 dispatch({
@@ -118,8 +118,8 @@ export const getAllLanguages = (region) => {
             .then(function(response){
                 // console.log('getAllSubregions response', response);
                 const unic =  _findUniqLanguages(response.data);
-                console.log('unic' , unic);
-                console.log('response.data' , response.data);
+                /*console.log('unic' , unic);
+                console.log('response.data' , response.data);*/
                 dispatch({
                     type: C.FETCH_ALL_LANGUAGES_SUCCESS,
                     filterItems: unic
