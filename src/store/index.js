@@ -3,11 +3,10 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from '../reducer'
 
-import randomCode from '../middlewares/random-code'
 
 
 
-const enhancer = composeWithDevTools(applyMiddleware(thunk, randomCode));
+const enhancer = composeWithDevTools(applyMiddleware(thunk));
 
 const store = createStore(reducer, {}, enhancer);
 window.store = store;
