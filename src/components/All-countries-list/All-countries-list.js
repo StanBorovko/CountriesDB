@@ -22,16 +22,7 @@ class AllCountriesList extends Component {
     }
 
     update = () => {
-        // const {region} = this.props;
-        // console.log(region);
         this.props.getAllCountries();
-        // const {countries, loading, error} = this.props;
-        /*
-                this.setState({
-                    countries,
-                    loading,
-                    error
-                })*/
     };
 
     content = (countries) => {
@@ -48,11 +39,8 @@ class AllCountriesList extends Component {
                         <Accordion.Collapse eventKey={eventKey.toString()}>
                             <Card.Body>
                                 <CountriesInRegionCard counties={countries.filter(country => {
-                                    // console.log(countries);
-                                    // console.log('country in region',country, country['region'], region, country['region'] === region);
                                     return country['region'] === region;
                                 })}/>
-                                {/*<AllCountriesInRegion region={region.toLowerCase()}/>*/}
                             </Card.Body>
                         </Accordion.Collapse>
                     </Card>);
@@ -62,13 +50,11 @@ class AllCountriesList extends Component {
 
     render() {
         const {countries, loading, error} = this.props;
-        // console.log('all-in-reg', countries, loading, error);
 
         const hasData = !(loading || error);
         const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = hasData ? this.content(countries) : null;
-        // console.log('all-in-reg', content);
         return (
             <Accordion>
                 {errorMessage}
@@ -78,38 +64,6 @@ class AllCountriesList extends Component {
         );
     }
 }
-
-/*
-
-const AllCountriesList = () => {
-        let eventKey = -1;
-        const content = C.REGIONS.map(region =>
-            {
-                eventKey++;
-                return (
-                <Card key={eventKey}>
-                <Card.Header>
-                    <Accordion.Toggle as={Button} variant="link" eventKey={eventKey.toString()}>
-                        {region}
-                    </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey={eventKey.toString()}>
-                    <Card.Body>
-                        <AllCountriesInRegion region={region.toLowerCase()}/>
-                    </Card.Body>
-                </Accordion.Collapse>
-            </Card>);
-            }
-        );
-        return (
-            <Accordion>
-                {content}
-            </Accordion>
-        );
-    }
-;
-
-*/
 
 const mapStateToProps = ({countries}) => {
     return {

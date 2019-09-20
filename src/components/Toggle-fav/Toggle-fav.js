@@ -3,7 +3,6 @@ import './style.css';
 import Button from "react-bootstrap/Button";
 import {connect} from "react-redux";
 import {isFavorite, addToFavorites, removeFromFavorites} from "../../actions";
-import C from "../../constants";
 
 class ToggleFav extends Component {
 
@@ -44,26 +43,15 @@ class ToggleFav extends Component {
         isFavorite(country);
 
         const {isFav} = this.props;
-
         if (isFav) this.setState({
             variant: "outline-danger",
             label: "Remove from Favorites",
             actionOnClick: this.removeFromFav
         });
-
-        console.log('I\'m updating, country:', country, this.state, isFav);
     };
 
     render() {
-        const {isFav, country} = this.props;
-        /*let variant = "outline-primary",
-            label = "Add to Favorites",
-            actionOnClick = this.addToFav;
-        if (isFav) {
-            variant = "outline-danger";
-            label = "Remove from Favorites";
-            actionOnClick = this.removeFromFav;
-        }*/
+        const {country} = this.props;
         const {variant, label, actionOnClick} = this.state;
         return (
             <Button variant={variant}
@@ -76,7 +64,6 @@ class ToggleFav extends Component {
 }
 
 const mapStateToProps = ({favorites}) => {
-    // console.log('favorites map', favorites);
     return {
         isFav: favorites.isFavorite
     }

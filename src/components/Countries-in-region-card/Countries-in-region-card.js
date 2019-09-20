@@ -4,7 +4,6 @@ import Card from "react-bootstrap/Card";
 import ToggleFav from "../Toggle-fav/Toggle-fav";
 
 const CountriesInRegionCard = ({counties}) => {
-    // console.log(counties);
     const items = counties.map(country => {
         return <Card.Body key={country["alpha3Code"]}>
             {country['name']}

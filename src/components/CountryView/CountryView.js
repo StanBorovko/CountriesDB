@@ -34,16 +34,3 @@ const CountryView = ({country}) => {
 };
 
 export default CountryView;
-/*
-
-<div className="country-view">
-    <img src={flag} alt={name + ' flag'} className="country-view__flag"/>
-    <h3 className="country-view__name">{name}</h3>
-    <div className="country-view__capital">Capital: {capital}</div>
-    <div className="country-view__population">Population: {population}</div>
-    <div className="country-view__language">Language: {languageName}</div>
-    <div className="country-view__currency">
-        <div className="country-view__currency-name">Currency: {currencyName}</div>
-        <div className="country-view__symbol badge badge-light">{currencySymbol}</div>
-    </div>
-</div>*/

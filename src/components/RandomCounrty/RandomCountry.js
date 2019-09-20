@@ -18,13 +18,7 @@ class RandomCountry extends Component {
         loading: true
     };
 
-    // restCountriesService = new RestCountriesService();
-
-    // countryCodes = getCounrtyCodes();
-
     componentDidMount() {
-        //TODO: make fetching new country at loading;
-
         this.updateCountry();
         const {updateInterval} = this.props;
         this.interval = setInterval(this.updateCountry, updateInterval);
@@ -33,49 +27,20 @@ class RandomCountry extends Component {
     componentWillUnmount() {
         clearInterval(this.interval);
     }
-/*
-    onCountryLoaded = country => {
-        // console.log(country);
-        this.setState({
-            country,
-            loading: false,
-            error: false
-        });
-    };
-
-    onError = err => {
-        this.setState({
-            error: true,
-            loading: false
-        });
-    };*/
 
     updateCountry = () => {
-        /*const {country, loading, error} = this.props.getRandomCountry();
-        console.log('getRandomCountry', this.props.getRandomCountry());
-        console.log('getRandomCountry', country, loading, error);*/
         this.props.getRandomCountry();
         const {country, loading, error} = this.props;
-        // console.log('getRandomCountry', country, loading, error);
 
         this.setState({
             country,
             loading,
             error
         })
-        /*
-        const randomIndex = Math.floor(Math.random() * (this.countryCodes.length + 1)),
-            randomCountryCode = this.countryCodes[randomIndex];
-        this.restCountriesService
-            .getCountry(randomCountryCode)
-            .then(this.onCountryLoaded)
-            .catch(this.onError);*/
     };
 
     render() {
-        // const country = JSON.stringify(this.state.country);
         const {country, loading, error} = this.state;
-        // console.log(country, loading, error);
         const hasData = !(loading || error);
         const errorMessage = error ? <ErrorIndicator/> : null;
         const spinner = loading ? <Spinner/> : null;
@@ -93,12 +58,12 @@ class RandomCountry extends Component {
 
 
 const mapStateToProps = ({country}) => {
-    // console.log('country', country);
     return {
-    country: country.country,
-    loading: country.loading,
-    error: country.error
-}};
+        country: country.country,
+        loading: country.loading,
+        error: country.error
+    }
+};
 
 
-export default connect(mapStateToProps,{getRandomCountry})(RandomCountry);
+export default connect(mapStateToProps, {getRandomCountry})(RandomCountry);

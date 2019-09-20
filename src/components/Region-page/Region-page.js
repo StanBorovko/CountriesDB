@@ -18,17 +18,10 @@ class RegionPage extends Component {
     };
 
     componentDidMount() {
-        // this.updateCountries();
         this.update();
     }
 
     componentDidUpdate(prevProps) {
-        /*console.log('this.props.countries', this.props.countries);
-        console.log('prevProps.countries', prevProps.countries);
-        console.log('this.props.filterItems', this.props.filterItems);
-        console.log('prevProps.filterItems', prevProps.filterItems);
-        console.log('this.props.filter', this.props.filter);
-        console.log('prevProps.filter', prevProps.filter);*/
         if (this.props.filter !== prevProps.filter || this.props.region !== prevProps.region) {
             this.update();
         }
@@ -54,24 +47,8 @@ class RegionPage extends Component {
         }
 
         this.setState({currentFilter: null});
-
-        console.log('I\'m updating');
     };
-    /*
 
-        updateCountries = () => {
-            const {region} = this.props;
-            // console.log(region);
-            this.props.getAllCountriesInRegion(region);
-            const {countries, loading, error} = this.props;
-
-            /!*this.setState({
-                countries,
-                loading,
-                error
-            })*!/
-        };
-    */
     onFilterChange = currentFilter => {
         this.setState({currentFilter});
     };
@@ -83,9 +60,7 @@ class RegionPage extends Component {
     hasLanguage = (country, filterValue) => {
         const {languages} = country;
         let flag = false;
-        // console.log(languages);
         languages.forEach(language => {
-            console.log('name-value', language['name'], filterValue, language['name'] === filterValue);
             if (language['name'] === filterValue) {
                 flag = true;
             }
@@ -96,13 +71,11 @@ class RegionPage extends Component {
     renderContent = () => {
         const {countries, filter, filterItems, region} = this.props,
             {currentFilter} = this.state;
-        // console.log('filterItems', filterItems);
         const countriesFiltered = countries.filter(country => {
             if (currentFilter) {
                 if (filter === C.FILTER_BY_SUBREGIONS) {
                     return this.hasSubregion(country, currentFilter);
                 } else if (filter === C.FILTER_BY_LANGUAGES) {
-                    console.log("filtering", country, currentFilter, this.hasLanguage(country, currentFilter));
                     return this.hasLanguage(country, currentFilter)
                 } else {
                     return true;
@@ -119,7 +92,6 @@ class RegionPage extends Component {
         } else {
             pageTitle += region;
         }
-        console.log('countriesFiltered, filter, currentFilter', countriesFiltered, filter, currentFilter);
         return (
             <React.Fragment>
                 <h1 className="text-center text-uppercase font-weight-bold">{pageTitle}</h1>
@@ -136,14 +108,11 @@ class RegionPage extends Component {
 
     render() {
         const {countries, loading, error, filter} = this.props;
-        // console.log('all-in-reg', countries, loading, error);
 
         const hasData = !(loading || error);
         const errorMessage = error ? <Card.Body><ErrorIndicator/></Card.Body> : null;
         const spinner = loading ? <Card.Body><Spinner/></Card.Body> : null;
         const content = hasData ? this.renderContent(countries, filter) : null;
-        // const content =  null;
-        console.log(content);
         return (
             <div className="p-3">
                 {errorMessage}
@@ -155,7 +124,6 @@ class RegionPage extends Component {
 }
 
 const mapStateToProps = ({countries, filter}) => {
-    // console.log('mapStateToProps', filter);
     return {
         countries: countries.countries,
         loading: countries.loading,

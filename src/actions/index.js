@@ -36,7 +36,6 @@ export const getRandomCountry = () => {
 
         return axios.get(_apiBase + `/alpha/${randomCode}?fields=name;capital;currencies;languages;flag;population`)
             .then(function (response) {
-                // console.log('response', response);
                 dispatch({
                     type: C.FETCH_COUNTRY_SUCCESS,
                     country: response.data
@@ -62,7 +61,6 @@ export const getAllCountries = () => {
 
         return axios.get(_apiBase + `/all?fields=name;alpha3Code;region`)
             .then(function (response) {
-                // console.log('response', response);
                 dispatch({
                     type: C.FETCH_ALL_COUNTRIES_SUCCESS,
                     countries: response.data
@@ -89,7 +87,6 @@ export const getAllCountriesInRegion = (region) => {
 
         return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;capital;currencies;languages;flag;population;subregion`)
             .then(function (response) {
-                // console.log('response', response);
                 dispatch({
                     type: C.FETCH_COUNTRIES_IN_REGION_SUCCESS,
                     countries: response.data
@@ -116,9 +113,7 @@ export const getAllSubregions = (region) => {
 
         return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;subregion`)
             .then(function (response) {
-                // console.log('getAllSubregions response', response);
                 const unic = _findUniqSubregions(response.data);
-                // console.log('unic' , unic);
                 dispatch({
                     type: C.FETCH_ALL_SUBREGIONS_SUCCESS,
                     filterItems: unic
@@ -144,10 +139,7 @@ export const getAllLanguages = (region) => {
 
         return axios.get(_apiBase + `/region/${region}?fields=name;alpha3Code;languages`)
             .then(function (response) {
-                // console.log('getAllSubregions response', response);
                 const unic = _findUniqLanguages(response.data);
-                /*console.log('unic' , unic);
-                console.log('response.data' , response.data);*/
                 dispatch({
                     type: C.FETCH_ALL_LANGUAGES_SUCCESS,
                     filterItems: unic
@@ -164,7 +156,6 @@ export const getAllLanguages = (region) => {
 };
 
 const getFavoritesFromLocalStorage = () => {
-    console.log('localStorage.getItem(C.FAVORITES)', localStorage.getItem(C.FAVORITES));
     return JSON.parse(localStorage.getItem(C.FAVORITES));
 };
 
@@ -175,7 +166,6 @@ const setFavoritesToLocalStorage = (newFavorites) => {
 export const isFavorite = (item) => {
     const favorites = getFavoritesFromLocalStorage();
     let isFavorite = false;
-    console.log(favorites);
     if (favorites) {
         isFavorite = favorites.indexOf(item) !== -1;
     }
