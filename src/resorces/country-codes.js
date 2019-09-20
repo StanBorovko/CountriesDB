@@ -248,7 +248,7 @@ export const getCounrtyCodes = () => {
         "SE\n" +
         "LK\n" +
         "JM\n" +
-        "JP\n";
+        "JP";
 
     return countries.split('\n').map(country => country.trim());
 };
