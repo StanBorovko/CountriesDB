@@ -61,7 +61,7 @@ export const getAllCountries = () => {
             type: C.FETCH_ALL_COUNTRIES
         });
 
-        return axios.get(_apiBase + `/all?fields=name;alpha3Code;region`)
+        return axios.get(_apiBase + `/all?fields=name;alpha3Code;flag;region`)
             .then(function (response) {
                 dispatch({
                     type: C.FETCH_ALL_COUNTRIES_SUCCESS,

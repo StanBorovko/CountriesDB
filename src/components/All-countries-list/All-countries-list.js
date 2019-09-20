@@ -30,9 +30,12 @@ class AllCountriesList extends Component {
         return C.REGIONS.map(region => {
                 eventKey++;
                 return (
-                    <Card key={eventKey}>
+                    <Card key={eventKey} className="bg-light">
                         <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey={eventKey.toString()}>
+                            <Accordion.Toggle as={Button}
+                                              variant="link"
+                                              className="text-dark"
+                                              eventKey={eventKey.toString()}>
                                 {region}
                             </Accordion.Toggle>
                         </Card.Header>
@@ -56,7 +59,7 @@ class AllCountriesList extends Component {
         const spinner = loading ? <Spinner/> : null;
         const content = hasData ? this.content(countries) : null;
         return (
-            <Accordion>
+            <Accordion className="m-3">
                 {errorMessage}
                 {spinner}
                 {content}

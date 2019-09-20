@@ -18,7 +18,7 @@ const Filter = ({items, filter, onFilterChange}) => {
         filterTitle = (filter) ? filter : "Filters";
     return (
         <ButtonGroup vertical>
-            <DropdownButton as={ButtonGroup} title={filterTitle} id="bg-vertical-dropdown-1">
+            <DropdownButton as={ButtonGroup} title={filterTitle} id="bg-vertical-dropdown-1" className="btn-secondary">
                 <Dropdown.Item eventKey="1" key="1" onClick={() => {
                     onFilterChange(null)
                 }}>All</Dropdown.Item>

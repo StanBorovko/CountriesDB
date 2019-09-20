@@ -23,40 +23,40 @@ const NavbarRegions = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Item className="nav-item link">
+                        <Nav.Item className="nav-item link nav-link">
                             <Link to="/">Home</Link>
                         </Nav.Item>
                         <NavDropdown title="Europe" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/europe"
-                                  className="link-label mt-1 mb-1">Subregions</Link>
+                                  className="link-label m-1">Subregions</Link>
                             <Link to="/byLanguage/europe"
-                                  className="link-label mt-1 mb-1">Languages</Link>
+                                  className="link-label m-1">Languages</Link>
                         </NavDropdown>
                         <NavDropdown title="Americas" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/americas"
-                                  className="link-label mt-1 mb-1">Subregions</Link>
+                                  className="link-label m-1">Subregions</Link>
                             <Link to="/byLanguage/americas"
-                                  className="link-label mt-1 mb-1">Languages</Link>
+                                  className="link-label m-1">Languages</Link>
                         </NavDropdown>
                         <NavDropdown title="Asia" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/asia"
-                                  className="link-label mt-1 mb-1">Subregions</Link>
+                                  className="link-label m-1">Subregions</Link>
                             <Link to="/byLanguage/asia"
-                                  className="link-label mt-1 mb-1">Languages</Link>
+                                  className="link-label m-1">Languages</Link>
                         </NavDropdown>
                         <NavDropdown title="Africa" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/africa"
-                                  className="link-label mt-1 mb-1">Subregions</Link>
+                                  className="link-label m-1">Subregions</Link>
                             <Link to="/byLanguage/africa"
-                                  className="link-label mt-1 mb-1">Languages</Link>
+                                  className="link-label m-1">Languages</Link>
                         </NavDropdown>
                         <NavDropdown title="Oceania" id="Europe-nav-dropdown" className="link">
                             <Link to="/bySubregion/oceania"
-                                  className="link-label mt-1 mb-1">Subregions</Link>
+                                  className="link-label m-1">Subregions</Link>
                             <Link to="/byLanguage/oceania"
-                                  className="link-label mt-1 mb-1">Languages</Link>
+                                  className="link-label m-1">Languages</Link>
                         </NavDropdown>
-                        <Nav.Item className="nav-item link">
+                        <Nav.Item className="nav-item link nav-link">
                             <Link to="/favorites">Favorites</Link>
                         </Nav.Item>
                     </Nav>

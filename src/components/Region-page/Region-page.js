@@ -94,11 +94,11 @@ class RegionPage extends Component {
         }
         return (
             <React.Fragment>
-                <h1 className="text-center text-uppercase font-weight-bold">{pageTitle}</h1>
+                <h1 className="text-center text-uppercase font-weight-bold text-warning">{pageTitle}</h1>
                 <Filter items={filterItems}
                         filter={currentFilter}
                         onFilterChange={this.onFilterChange}/>
-                <span className="ml-3">Current filter: {(currentFilter) ? currentFilter : 'All'}</span>
+                <span className="ml-3 text-secondary">Current filter: {(currentFilter) ? currentFilter : 'All'}</span>
                 <CountriesInRegionCard counties={countriesFiltered}/>
 
             </React.Fragment>
