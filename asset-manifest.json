@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/CountriesDB/static/css/main.31092e05.chunk.css",
+    "main.js": "/CountriesDB/static/js/main.b78cecfd.chunk.js",
+    "main.js.map": "/CountriesDB/static/js/main.b78cecfd.chunk.js.map",
+    "runtime~main.js": "/CountriesDB/static/js/runtime~main.0a3268c5.js",
+    "runtime~main.js.map": "/CountriesDB/static/js/runtime~main.0a3268c5.js.map",
+    "static/js/2.1d981292.chunk.js": "/CountriesDB/static/js/2.1d981292.chunk.js",
+    "static/js/2.1d981292.chunk.js.map": "/CountriesDB/static/js/2.1d981292.chunk.js.map",
+    "index.html": "/CountriesDB/index.html",
+    "precache-manifest.b1a6c245040ab37cf045411f808a481a.js": "/CountriesDB/precache-manifest.b1a6c245040ab37cf045411f808a481a.js",
+    "service-worker.js": "/CountriesDB/service-worker.js",
+    "static/css/main.31092e05.chunk.css.map": "/CountriesDB/static/css/main.31092e05.chunk.css.map",
+    "static/media/error.svg": "/CountriesDB/static/media/error.5a70571c.svg",
+    "static/media/globe.svg": "/CountriesDB/static/media/globe.b50cddc5.svg"
+  }
+}
