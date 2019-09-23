@@ -8,6 +8,7 @@ import Error404 from "../Error-404/Error-404";
 import HomePage from "../HomePage/HomePage";
 import RegionPage from "../Region-page/Region-page"
 import C from "../../constants";
+import FavoritesPage from "../Favorites-page/Favorites-page"
 
 
 const App = () => {
@@ -33,6 +34,9 @@ const App = () => {
                                     region={region}
                                     filter={C.FILTER_BY_LANGUAGES}/>
                             }}/>
+                            <Route path="/favorites"
+                                   exact
+                                   component={FavoritesPage}/>
                             <Route component={Error404}/>
                         </Switch>
                     </section>

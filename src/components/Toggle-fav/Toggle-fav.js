@@ -56,7 +56,7 @@ class ToggleFav extends Component {
         return (
             <Button variant={variant}
                     size="sm"
-                    onClick={() => actionOnClick(country)}>
+                    /*onClick={() => actionOnClick(country)}*/>
                 {label}
             </Button>
         );

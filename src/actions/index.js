@@ -29,8 +29,6 @@ export const getRandomCountry = () => {
         const countryCodes = getCounrtyCodes(),
             randomIndex = Math.floor(Math.random() * (countryCodes.length + 1)),
             randomCode = countryCodes[randomIndex];
-        console.log(countryCodes);
-
 
         dispatch({
             type: C.FETCH_COUNTRY
